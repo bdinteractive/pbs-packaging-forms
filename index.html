@@ -20,6 +20,11 @@
         <h1>PBS Packaging Forms</h1>
       </div>
     </div>
+    <div clas="row">
+      <div class="col-md-12" style="padding: 20px 0 40px">
+        <button type="button" class="btn btn-primary">Preform Copy</button>
+      </div>
+    </div>
     <div class="row">
       <div class="col-md-12">
         <table id="packagingForm" class="display" style="width:100%">
@@ -47,49 +52,49 @@
         ajax: './data/forms.json',
         columns: [
           {
-                data:   "all",
-                render: function ( data, type, row ) {
-                    if ( type === 'display' ) {
-                        return '<input type="checkbox" class="editor-active">';
-                    }
-                    return data;
-                },
-                className: "dt-body-center"
+            data:   "all",
+            render: function ( data, type, row ) {
+              if ( type === 'display' ) {
+                return '<input type="checkbox" class="editor-active">';
+              }
+              return data;
             },
-            { data: "id" },
-            { data: "title" },
-            { data: "nola_code" },
-            { data: "revise_date" },
-            {
-                data:   "UCC",
-                render: function ( data, type, row ) {
-                    if ( type === 'display' ) {
-                        return '<input type="checkbox" class="editor-active">';
-                    }
-                    return data;
-                },
-                className: "dt-body-center"
+            className: "dt-body-center"
+          },
+          { data: "id" },
+          { data: "title" },
+          { data: "nola_code" },
+          { data: "revise_date" },
+          {
+            data:   "UCC",
+            render: function ( data, type, row ) {
+              if ( type === 'display' ) {
+                return '<input type="checkbox" class="editor-active">';
+              }
+              return data;
             },
-            {
-                data:   "OAC",
-                render: function ( data, type, row ) {
-                    if ( type === 'display' ) {
-                        return '<input type="checkbox" class="editor-active">';
-                    }
-                    return data;
-                },
-                className: "dt-body-center"
+            className: "dt-body-center"
+          },
+          {
+            data:   "OAC",
+            render: function ( data, type, row ) {
+              if ( type === 'display' ) {
+                return '<input type="checkbox" class="editor-active">';
+              }
+              return data;
             },
-            {
-                data:   "IWT",
-                render: function ( data, type, row ) {
-                    if ( type === 'display' ) {
-                        return '<input type="checkbox" class="editor-active">';
-                    }
-                    return data;
-                },
-                className: "dt-body-center"
-            }
+            className: "dt-body-center"
+          },
+          {
+            data:   "IWT",
+            render: function ( data, type, row ) {
+              if ( type === 'display' ) {
+                return '<input type="checkbox" class="editor-active">';
+              }
+              return data;
+            },
+            className: "dt-body-center"
+          }
         ],
       });
     });
