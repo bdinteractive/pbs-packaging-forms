@@ -44,16 +44,53 @@
     $(document).ready(function() {
       console.log("App Loaded!!!");
       $('#packagingForm').DataTable({
-        ajax: './data/forms.txt',
-        columnDefs: [ {
-            orderable: false,
-            className: 'select-checkbox',
-            targets:   0
-        } ],
-        select: {
-            style:    'os',
-            selector: 'td:first-child'
-        },
+        ajax: './data/forms.json',
+        columns: [
+          {
+                data:   "all",
+                render: function ( data, type, row ) {
+                    if ( type === 'display' ) {
+                        return '<input type="checkbox" class="editor-active">';
+                    }
+                    return data;
+                },
+                className: "dt-body-center"
+            },
+            { data: "id" },
+            { data: "title" },
+            { data: "nola_code" },
+            { data: "revise_date" },
+            {
+                data:   "UCC",
+                render: function ( data, type, row ) {
+                    if ( type === 'display' ) {
+                        return '<input type="checkbox" class="editor-active">';
+                    }
+                    return data;
+                },
+                className: "dt-body-center"
+            },
+            {
+                data:   "OAC",
+                render: function ( data, type, row ) {
+                    if ( type === 'display' ) {
+                        return '<input type="checkbox" class="editor-active">';
+                    }
+                    return data;
+                },
+                className: "dt-body-center"
+            },
+            {
+                data:   "IWT",
+                render: function ( data, type, row ) {
+                    if ( type === 'display' ) {
+                        return '<input type="checkbox" class="editor-active">';
+                    }
+                    return data;
+                },
+                className: "dt-body-center"
+            }
+        ],
       });
     });
   </script>
