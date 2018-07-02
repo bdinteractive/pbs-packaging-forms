@@ -22,7 +22,7 @@
     </div>
     <div clas="row">
       <div class="col-md-12" style="padding: 20px 0 40px">
-        <button type="button" class="btn btn-primary">Preform Copy</button>
+        <button type="button" id="button" class="btn btn-primary">Preform Copy</button>
       </div>
     </div>
     <div class="row">
@@ -48,14 +48,14 @@
   <script>
     $(document).ready(function() {
       console.log("App Loaded!!!");
-      $('#packagingForm').DataTable({
+      var table = $('#packagingForm').DataTable({
         ajax: './data/forms.json',
         columns: [
           {
             data:   "all",
             render: function ( data, type, row ) {
               if ( type === 'display' ) {
-                return '<input type="checkbox" class="editor-active">';
+                return '<input type="checkbox" data-data="'+data+'" value="ALL" class="pbs-check editor-active">';
               }
               return data;
             },
@@ -69,7 +69,7 @@
             data:   "UCC",
             render: function ( data, type, row ) {
               if ( type === 'display' ) {
-                return '<input type="checkbox" class="editor-active">';
+                return '<input type="checkbox" data-data="'+data+'" value="UCC" class="pbs-check editor-active">';
               }
               return data;
             },
@@ -79,7 +79,7 @@
             data:   "OAC",
             render: function ( data, type, row ) {
               if ( type === 'display' ) {
-                return '<input type="checkbox" class="editor-active">';
+                return '<input type="checkbox" data-data="'+data+'" value="OAC" class=" pbs-checkeditor-active">';
               }
               return data;
             },
@@ -89,13 +89,35 @@
             data:   "IWT",
             render: function ( data, type, row ) {
               if ( type === 'display' ) {
-                return '<input type="checkbox" class="editor-active">';
+                return '<input type="checkbox" data-data="'+data+'" value="IWT" class="pbs-check editor-active">';
               }
               return data;
             },
             className: "dt-body-center"
           }
         ],
+      });
+      var copiedData = [];
+      $('#button').on('click', function(e){
+        var form = this;
+        var params = table.$('input');
+        $.each(params, function(key, value){
+          if(params[key].checked === true){
+            // console.log(params[key]);
+            // console.log(value.value);
+            // console.log($(value).data("data"));
+            var obj = {
+              "value": value.value,
+              "data": $(value).data("data")
+            };
+            copiedData.push(obj);
+          }
+        });
+        if(copiedData.length > 0){
+          console.log("Data Array to send to endpoint: ", copiedData);
+        } else {
+          console.log("Nothing Selected");
+        }
       });
     });
   </script>
