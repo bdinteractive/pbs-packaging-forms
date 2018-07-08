@@ -31,9 +31,10 @@
           <thead>
             <tr>
               <th>Select All</th>
-              <th>Package ID</th>
+              <th>NOLA</th>
               <th>Package Title</th>
-              <th>NOLA Code</th>
+              <th>Package Type</th>
+              <th>Package ID</th>
               <th>Date Revised</th>
               <th>Copy UCC</th>
               <th>Copy OAC</th>
@@ -55,21 +56,22 @@
             data:   "all",
             render: function ( data, type, row ) {
               if ( type === 'display' ) {
-                return '<input type="checkbox" data-data="'+data+'" value="ALL" class="pbs-check editor-active">';
+                return '<input type="checkbox" data-data="'+data+'" value="ALL" class="pbs-check-all pbs-check editor-active">';
               }
               return data;
             },
             className: "dt-body-center"
           },
-          { data: "id" },
-          { data: "title" },
           { data: "nola_code" },
+          { data: "title" },
+          { data: "type" },
+          { data: "id" },
           { data: "revise_date" },
           {
             data:   "UCC",
             render: function ( data, type, row ) {
               if ( type === 'display' ) {
-                return '<input type="checkbox" data-data="'+data+'" value="UCC" class="pbs-check editor-active">';
+                return '<input type="checkbox" data-data="'+data+'" value="UCC" class="'+data+' pbs-check editor-active">';
               }
               return data;
             },
@@ -79,7 +81,7 @@
             data:   "OAC",
             render: function ( data, type, row ) {
               if ( type === 'display' ) {
-                return '<input type="checkbox" data-data="'+data+'" value="OAC" class=" pbs-checkeditor-active">';
+                return '<input type="checkbox" data-data="'+data+'" value="OAC" class="'+data+' pbs-check editor-active">';
               }
               return data;
             },
@@ -89,7 +91,7 @@
             data:   "IWT",
             render: function ( data, type, row ) {
               if ( type === 'display' ) {
-                return '<input type="checkbox" data-data="'+data+'" value="IWT" class="pbs-check editor-active">';
+                return '<input type="checkbox" data-data="'+data+'" value="IWT" class="'+data+' pbs-check editor-active">';
               }
               return data;
             },
@@ -97,12 +99,19 @@
           }
         ],
       });
+      $(document).on('change', '.pbs-check-all', function(e){
+        // console.log("All Clicked: ", e.target.checked);
+        var id = $(this).data("data");
+        // console.log("Data: ", id);
+        $("."+id).prop("checked", this.checked);
+      });
       var copiedData = [];
       $('#button').on('click', function(e){
+        copiedData = [];
         var form = this;
         var params = table.$('input');
         $.each(params, function(key, value){
-          if(params[key].checked === true){
+          if(params[key].checked === true && value.value !== "ALL"){
             // console.log(params[key]);
             // console.log(value.value);
             // console.log($(value).data("data"));
