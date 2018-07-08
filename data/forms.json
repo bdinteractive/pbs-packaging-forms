@@ -1,48 +1,32 @@
 {
   "data": [
     {
-      "all": "P464509-002",
       "id": "P464509-002",
       "title": "Antiques Roadshow",
       "type": "HD-Base",
       "nola_code": "ANRO 002010",
-      "revise_date": "05/15/2018",
-      "UCC": "P464509-002",
-      "OAC": "P464509-002",
-      "IWT": "P464509-002"
+      "revised_date": "05/15/2018"
     },
     {
-      "all": "P4749229-002",
       "id": "P4749229-002",
       "title": "Nature",
       "type": "HD-Base",
       "nola_code": "NAAT 003401",
-      "revise_date": "05/15/2018",
-      "UCC": "P4749229-002",
-      "OAC": "P4749229-002",
-      "IWT": "P4749229-002"
+      "revised_date": "05/15/2018"
     },
     {
-      "all": "P494032-002",
       "id": "P494032-002",
       "title": "Civilizations",
       "type": "SD-Base",
       "nola_code": "CIVL 00000205",
-      "revise_date": "05/15/2018",
-      "UCC": "P494032-002",
-      "OAC": "P494032-002",
-      "IWT": "P494032-002"
+      "revised_date": "05/15/2018"
     },
     {
-      "all": "P498540-002",
       "id": "P498540-002",
       "title": "NOVA Wonders",
       "type": "HD-Base",
       "nola_code": "NOWO 000104",
-      "revise_date": "05/15/2018",
-      "UCC": "P498540-002",
-      "OAC": "P498540-002",
-      "IWT": "P498540-002"
+      "revised_date": "05/15/2018"
     }
   ]
 }

@@ -30,15 +30,12 @@
         <table id="packagingForm" class="display" style="width:100%">
           <thead>
             <tr>
-              <th>Select All</th>
               <th>NOLA</th>
               <th>Package Title</th>
               <th>Package Type</th>
               <th>Package ID</th>
               <th>Date Revised</th>
-              <th>Copy UCC</th>
-              <th>Copy OAC</th>
-              <th>Copy IWT</th>
+              <th>Copy Format</th>
             </tr>
           </thead>
         </table>
@@ -52,50 +49,25 @@
       var table = $('#packagingForm').DataTable({
         ajax: './data/forms.json',
         columns: [
-          {
-            data:   "all",
-            render: function ( data, type, row ) {
-              if ( type === 'display' ) {
-                return '<input type="checkbox" data-data="'+data+'" value="ALL" class="pbs-check-all pbs-check editor-active">';
-              }
-              return data;
-            },
-            className: "dt-body-center"
-          },
           { data: "nola_code" },
           { data: "title" },
           { data: "type" },
           { data: "id" },
-          { data: "revise_date" },
+          { data: "revised_date" },
           {
-            data:   "UCC",
+            data:   "id",
             render: function ( data, type, row ) {
               if ( type === 'display' ) {
-                return '<input type="checkbox" data-data="'+data+'" value="UCC" class="'+data+' pbs-check editor-active">';
+                var inputs = "";
+                inputs += '<input type="checkbox" data-data="'+data+'" value="ALL" class="pbs-check-all pbs-check editor-active"> Select All<br/>';
+                inputs += '<input type="checkbox" data-data="'+data+'" value="UCC" class="'+data+' pbs-check editor-active"> UCC<br/>';
+                inputs += '<input type="checkbox" data-data="'+data+'" value="OAC" class="'+data+' pbs-check editor-active"> OAC<br/>';
+                inputs += '<input type="checkbox" data-data="'+data+'" value="IWT" class="'+data+' pbs-check editor-active"> IWT';
+                return inputs;
               }
               return data;
             },
-            className: "dt-body-center"
-          },
-          {
-            data:   "OAC",
-            render: function ( data, type, row ) {
-              if ( type === 'display' ) {
-                return '<input type="checkbox" data-data="'+data+'" value="OAC" class="'+data+' pbs-check editor-active">';
-              }
-              return data;
-            },
-            className: "dt-body-center"
-          },
-          {
-            data:   "IWT",
-            render: function ( data, type, row ) {
-              if ( type === 'display' ) {
-                return '<input type="checkbox" data-data="'+data+'" value="IWT" class="'+data+' pbs-check editor-active">';
-              }
-              return data;
-            },
-            className: "dt-body-center"
+            // className: "dt-body-center"
           }
         ],
       });
